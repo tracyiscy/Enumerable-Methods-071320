@@ -78,14 +78,9 @@ zoos["Bronx Zoo"][:animals][0][:count] = 3
 # Each of the zoos in the city just received 2 pandas. Alter the `zoos` information to reflect this new change:
 # In the array of animals under each Zoo, shovel this hash: { species: "Panda", count: 2 }
 
-zoos.collect do |zoo, property| 
-   if property == :animals 
-     property << { species: "Panda", count: 2 }
-    end 
+zoos.each do |zoo, properties|
+    zoos[zoo][:animals] << { species: "Panda", count: 2 }
 end
-
-
-
 
 
 # Return the number of Tigers at the Bronx Zoo.
@@ -93,8 +88,11 @@ end
 # First find the "Tiger" hash from the array of Animals at the Bronx Zoo and then, access the value under the ":count" key
 
 
-
-
+zoos["Bronx Zoo"][:animals].each do |animal|
+    if animal[:species] == "Tiger"
+        animal[:count]
+    end
+end
 
 
 # Generalize the process to find the ticket price of a specific zoo.
@@ -106,9 +104,11 @@ end
 # name_of_zoo = "Central Park Zoo" => returns 18
 # name_of_zoo = "Staten Island Zoo" => returns 10
 
+def find_ticket_price(name_of_zoo)
+    puts zoos[name_of_zoo][:price]
+end
 
-
-
+find_ticket_price("Bronx Zoo")
 
 # Return the sum of all the zoos' price. 
 # The return value should be: 53 
