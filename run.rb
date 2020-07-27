@@ -72,10 +72,17 @@ zoos["Central Park Zoo"][:animals] << { species: "Wolf", count: 4 }
 # Increment the number for the `:count` key in the "Penguin" hash in the Bronx Zoo array by 1. 
 # You can assume that the animal at index 0 will always be the "Penguin" hash.
 
-
+zoos["Bronx Zoo"][:animals][0][:count] = 3 
+   
 
 # Each of the zoos in the city just received 2 pandas. Alter the `zoos` information to reflect this new change:
 # In the array of animals under each Zoo, shovel this hash: { species: "Panda", count: 2 }
+
+zoos.collect do |zoo, property| 
+   if property == :animals 
+     property << { species: "Panda", count: 2 }
+    end 
+end
 
 
 
