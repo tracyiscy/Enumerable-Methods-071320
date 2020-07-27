@@ -104,25 +104,32 @@ end
 # name_of_zoo = "Central Park Zoo" => returns 18
 # name_of_zoo = "Staten Island Zoo" => returns 10
 
-def find_ticket_price(name_of_zoo)
+def find_ticket_price(name_of_zoo, zoos)
     puts zoos[name_of_zoo][:price]
 end
 
-find_ticket_price("Bronx Zoo")
+#find_ticket_price("Bronx Zoo", zoos)
+
 
 # Return the sum of all the zoos' price. 
 # The return value should be: 53 
 
-
-
-
+#Get into the value of each price key
+sum = 0 
+zoos.each do |zoo, properties| # add all zoo prices
+ sum += zoos[zoo][:price]
+end 
+#puts sum 
 
 # Return an array of all the locations where the zoos are located.
 # The return value should be an array of strings: ["Bronx", "Manhattan", "Staten Island"]
 # Consider which higher-level enumerable method(s) you'd use here.
 
-
-
+location = []
+zoos.collect do |zoo, properties|
+location << zoos[zoo][:location]
+end
+p location 
 
 
 # Find all the zoos that are open on the weekend. 
