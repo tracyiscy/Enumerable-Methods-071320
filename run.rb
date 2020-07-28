@@ -175,21 +175,94 @@ end
 
 #puts zoo_with_monkeys
 
+def new_zoos
+    zoos = {
+        "Bronx Zoo" => {
+            location: "Bronx",
+            price: 25,
+            weekend: true,
+            animals: [
+                {
+                    species: "Penguin",
+                    count: 2
+                },
+                {
+                    species: "Butterfly",
+                    count: 12
+                },
+                {
+                    species: "Tiger",
+                    count: 3
+                }
+            ]
+        },
+        "Central Park Zoo" =>  {
+            location: "Manhattan",
+            price: 18,
+            weekend: true,
+            animals: [
+                #{ species: "Wolf", count: 4 },
+                {
+                    species: "Tiger",
+                    count: 1
+                },
+                {
+                    species: "Monkey",
+                    count: 7
+                }
+            ]
+        },
+        "Staten Island Zoo" => {
+            location: "Staten Island",
+            price: 10,
+            weekend: false,
+            animals: [
+                {
+                    species: "Gorilla",
+                    count: 3
+                },
+                {
+                    species: "Monkey",
+                    count: 4
+                },
+                {
+                    species: "Elephant",
+                    count: 2
+                },
+                {
+                    species: "Bird",
+                    count: 6
+                }
+                
+            ]
+        }
+    }
+    
+zoos["Bronx Zoo"][:animals][0][:count] = 3 
+zoos.each do |zoo, properties|                 #add the count in each zoo 
+zoos[zoo][:animals] << { species: "Panda", count: 2 }
+end 
+end
+
 # Return an array of 3 numbers, each describing the total sum of the number of animals in a zoo.
 # The return value should be an array of 3 numbers: [20, 14, 17]
-# Consider which higher-level enumerable method(s) you'd use here.
+# # Consider which higher-level enumerable method(s) you'd use here.
+# # def total_sum_of_each_zoo
+#     new_zoos
+    sum = 0
+    total_sum_of_animals = []
+    zoos.collect { |zoo, properties|
+    sum=0
+    zoos[zoo][:animals].each{|animal|
+    sum +=animal[:count]
+}
+    total_sum_of_animals << sum
+}
 
-total_sum_of_animals = []
-zoos.collect do |zoo, properties|
-zoos[zoo][:animals].each do |animal|
-  puts animal[:count]
-  total_sum_of_animals 
-end
-end
-zoos.each do |zoo, properties|                 #add the count in each zoo 
-    zoos[zoo][:animals] << { species: "Panda", count: 2 }
-end 
-zoos["Bronx Zoo"][:animals][0][:count] = 3 
+p total_sum_of_animals
+# end
+
+
 
 
 
@@ -198,5 +271,20 @@ zoos["Bronx Zoo"][:animals][0][:count] = 3
 # Consider which higher-level enumerable method(s) you'd use here.
 
 
+max_value = -1
+zoos.collect{|zoo,properties|
+zoos[zoo][:animals].collect{|animal|
+if max_value < animal[:count]
+    max_value = animal[:count]
+end
+}
+}
 
-
+zoo_with_the_highest_count_of_species = []
+zoos.collect{|zoo,properties|
+zoos[zoo][:animals].collect{|animal|
+if animal[:count]==max_value
+    zoo_with_the_highest_count_of_species.push(zoo, properties)
+end
+}
+}
