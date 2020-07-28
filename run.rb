@@ -129,32 +129,51 @@ location = []
 zoos.collect do |zoo, properties|
 location << zoos[zoo][:location]
 end
-p location 
+#p location 
 
 
 # Find all the zoos that are open on the weekend. 
 # The return value should be a hash with two keys: ["Bronx Zoo", "Central Park Zoo"]
 # Consider which higher-level enumerable method(s) you'd use here.
 
+open_on_the_weekend = {}
+zoos.map{|zoo, properties|
+if zoos[zoo][:weekend] == true
+    open_on_the_weekend[zoo] ={}
+end
+}
 
-
+#puts open_on_the_weekend
 
 
 # Find the first zoo that are open on the weekend AND has the price under 20 dollars.
 # The return value should be an array with two elements: ["Central Park Zoo", { location: "Manhattan", ... }]
 # Consider which higher-level enumerable method(s) you'd use here.
 
+open_on_the_weekend_and_under_20 = []
+zoos.map do |zoo, properties|
+if zoos[zoo][:weekend] == true && zoos[zoo][:price] <20
+    open_on_the_weekend_and_under_20.push(zoo,zoos[zoo])
+end
+end
 
-
+#p open_on_the_weekend_and_under_20
 
 
 # Find all the zoos where there are monkeys.
 # The return value should be a hash with two keys: ["Central Park Zoo", "Staten Island Zoo"]
 # Consider which higher-level enumerable method(s) you'd use here.
 
+zoo_with_monkeys ={}
+zoos.each do |zoo, properties|
+    zoos[zoo][:animals].each{|animal|
+    if animal[:species] == "Monkey"
+        zoo_with_monkeys[zoo] = {}
+    end
+    }
+end
 
-
-
+puts zoo_with_monkeys
 
 # Return an array of 3 numbers, each describing the total sum of the number of animals in a zoo.
 # The return value should be an array of 3 numbers: [20, 14, 17]
