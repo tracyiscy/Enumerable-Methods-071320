@@ -175,91 +175,96 @@ end
 
 #puts zoo_with_monkeys
 
-def new_zoos
-    zoos = {
-        "Bronx Zoo" => {
-            location: "Bronx",
-            price: 25,
-            weekend: true,
-            animals: [
-                {
-                    species: "Penguin",
-                    count: 2
-                },
-                {
-                    species: "Butterfly",
-                    count: 12
-                },
-                {
-                    species: "Tiger",
-                    count: 3
-                }
-            ]
-        },
-        "Central Park Zoo" =>  {
-            location: "Manhattan",
-            price: 18,
-            weekend: true,
-            animals: [
-                #{ species: "Wolf", count: 4 },
-                {
-                    species: "Tiger",
-                    count: 1
-                },
-                {
-                    species: "Monkey",
-                    count: 7
-                }
-            ]
-        },
-        "Staten Island Zoo" => {
-            location: "Staten Island",
-            price: 10,
-            weekend: false,
-            animals: [
-                {
-                    species: "Gorilla",
-                    count: 3
-                },
-                {
-                    species: "Monkey",
-                    count: 4
-                },
-                {
-                    species: "Elephant",
-                    count: 2
-                },
-                {
-                    species: "Bird",
-                    count: 6
-                }
+# def new_zoos
+#     zoos = {
+#         "Bronx Zoo" => {
+#             location: "Bronx",
+#             price: 25,
+#             weekend: true,
+#             animals: [
+#                 {
+#                     species: "Penguin",
+#                     count: 2
+#                 },
+#                 {
+#                     species: "Butterfly",
+#                     count: 12
+#                 },
+#                 {
+#                     species: "Tiger",
+#                     count: 3
+#                 }
+#             ]
+#         },
+#         "Central Park Zoo" =>  {
+#             location: "Manhattan",
+#             price: 18,
+#             weekend: true,
+#             animals: [
+#                 #{ species: "Wolf", count: 4 },
+#                 {
+#                     species: "Tiger",
+#                     count: 1
+#                 },
+#                 {
+#                     species: "Monkey",
+#                     count: 7
+#                 }
+#             ]
+#         },
+#         "Staten Island Zoo" => {
+#             location: "Staten Island",
+#             price: 10,
+#             weekend: false,
+#             animals: [
+#                 {
+#                     species: "Gorilla",
+#                     count: 3
+#                 },
+#                 {
+#                     species: "Monkey",
+#                     count: 4
+#                 },
+#                 {
+#                     species: "Elephant",
+#                     count: 2
+#                 },
+#                 {
+#                     species: "Bird",
+#                     count: 6
+#                 }
                 
-            ]
-        }
-    }
+#             ]
+#         }
+#     }
     
-zoos["Bronx Zoo"][:animals][0][:count] = 3 
-zoos.each do |zoo, properties|                 #add the count in each zoo 
-zoos[zoo][:animals] << { species: "Panda", count: 2 }
-end 
-end
+# zoos["Bronx Zoo"][:animals][0][:count] = 3 
+# zoos.each do |zoo, properties|                 #add the count in each zoo 
+# zoos[zoo][:animals] << { species: "Panda", count: 2 }
+# end 
+# end
 
 # Return an array of 3 numbers, each describing the total sum of the number of animals in a zoo.
 # The return value should be an array of 3 numbers: [20, 14, 17]
 # # Consider which higher-level enumerable method(s) you'd use here.
 # # def total_sum_of_each_zoo
 #     new_zoos
+
+#define a variable to get the sums 
     sum = 0
+#define a empty array to shovel the sum into the array
     total_sum_of_animals = []
+#first, looping over the counts
     zoos.collect { |zoo, properties|
     sum=0
+#second loop
     zoos[zoo][:animals].each{|animal|
     sum +=animal[:count]
 }
     total_sum_of_animals << sum
 }
 
-p total_sum_of_animals
+#p total_sum_of_animals
 # end
 
 
@@ -280,7 +285,9 @@ end
 }
 }
 
+#define a empty array to get the return value
 zoo_with_the_highest_count_of_species = []
+#do the loop
 zoos.collect{|zoo,properties|
 zoos[zoo][:animals].collect{|animal|
 if animal[:count]==max_value
