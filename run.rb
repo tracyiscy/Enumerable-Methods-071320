@@ -173,13 +173,23 @@ zoos.each do |zoo, properties|
     }
 end
 
-puts zoo_with_monkeys
+#puts zoo_with_monkeys
 
 # Return an array of 3 numbers, each describing the total sum of the number of animals in a zoo.
 # The return value should be an array of 3 numbers: [20, 14, 17]
 # Consider which higher-level enumerable method(s) you'd use here.
 
-
+total_sum_of_animals = []
+zoos.collect do |zoo, properties|
+zoos[zoo][:animals].each do |animal|
+  puts animal[:count]
+  total_sum_of_animals 
+end
+end
+zoos.each do |zoo, properties|                 #add the count in each zoo 
+    zoos[zoo][:animals] << { species: "Panda", count: 2 }
+end 
+zoos["Bronx Zoo"][:animals][0][:count] = 3 
 
 
 
